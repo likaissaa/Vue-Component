@@ -27,10 +27,10 @@ Vue.component('uiselectinput', {
 	},
 	methods: {
 		changeme() {
-			this.$emit("changeme", this.pp)
+			this.$emit("update:pp", this.pp)
 		},
 		updateValue: function(value) {
-			this.$emit('input',value)
+			this.$emit('update:pp',value)
 		}
 	}
 })

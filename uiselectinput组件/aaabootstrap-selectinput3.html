@@ -12,12 +12,12 @@
 		<title></title>
 		<link rel="stylesheet" href="css/bootstrap.css/bootstrap-theme.min.css" />
 		<link rel="stylesheet" href="css/bootstrap.css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/bazel.build.css" />
+		
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/vue2.5.js" ></script>
-		<script type="text/javascript" src="js/jsAddress.js" ></script>
-		<script type="text/javascript" src="js/components/selectinput2.js" ></script>
+		
+		<script type="text/javascript" src="js/components/selectinput3.js" ></script>
 		<style type="text/css">
 
 .btmshow {
@@ -33,8 +33,8 @@
 	<body>
 		
 		<div id="app">
-        	<uiselectinput  :lists=lists :pp="jiji" v-model="jiji" @changeme="changeme"></uiselectinput>
-        	<uiselectinput  :lists=list2 :pp="gaga" v-model="gaga" @changeme="changeme2"></uiselectinput>
+        	<uiselectinput  :lists=lists  @update:pp="val => jiji = val" ></uiselectinput>
+        	<uiselectinput  :lists=list2    @update:pp="val => gaga = val"></uiselectinput>
 		</div>
 		<script>
 		
@@ -44,20 +44,9 @@
 			data:{
 				gaga:'',
 				jiji:'',
-				a:'',
-				b:'',
 				lists:[{text:'111'},{text:'222'},{text:'333'}],
 				list2:[{text:'aaa'},{text:'bbb'},{text:'ccc'}],
-				
 			},
-			methods:{
-				changeme(val){
-					this.jiji=val
-				},
-				changeme2(val){
-					this.gaga=val
-				},
-			}
 		})
 		</script>
 	</body>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<title>Vue2-搜索框组件</title>
+		<link rel="stylesheet" href="css/base.css" />
+		<script type="text/javascript" src="js/jquery-3.1.0.js"></script>
+		<script type="text/javascript" src="js/utils.js"></script>
+		<script type="text/javascript" src="js/vue2.js"></script>
+		<script type="text/javascript" src="js/jquery-3.1.0.js"></script>
+		<script type="text/javascript" src="js/Components/search.js"></script>
+		<style>
+			/**
+			 * 字体颜色，光标为红色，字体为text-shadow 颜色
+			 */
+			
+			input[type=search] {
+				color: #E03030;
+				text-shadow: 0px 0px 0px black;
+				-webkit-text-fill-color: transparent;
+			}
+			/**
+			 * 去掉search 框默认小x
+			 */
+			
+			input[type=search]::-webkit-search-cancel-button {
+				-webkit-appearance: none;
+			}
+			/**
+			 * 去掉search 框默认小x
+			 */
+			
+			input[type=search]::-webkit-input-placeholder {
+				color: #ddd;
+				text-shadow: 0 0 0 #ddd;
+				-webkit-text-fill-color: initial;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="search" style="margin-top: 50px;">
+			<!--移动端搜索框-->
+			<!--使用textIndent方法，切换animate 方法-->
+			<!--移动端搜索使用搜索  pc端使用enter 回车键，触发同一事件-->
+			<yh-search :caption="caption" v-on:submits="submits" v-on:cancel="cancel" v-on:touchme="touchme"></yh-search>
+		</div>
+		<script>
+		var a=new Date().getTime(); 
+		
+			var vm = new Vue({
+				el: '#search',
+				data: {
+					message: '',
+					caption: '搜索学生',
+					fucku: false
+				},
+				methods: {
+					/**
+					 * 
+					 */
+					touchme: function() {
+					},
+					cancel: function() {
+						console.log("cancel");
+					},
+					submits: function(text) {
+						alert(text);
+					},
+				}
+			})
+		</script>
+	</body>
+
+</html>

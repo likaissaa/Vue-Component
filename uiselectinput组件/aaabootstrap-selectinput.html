@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" href="css/bootstrap.css/bootstrap.min.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/components/selectinput.js"></script>
+		<style type="text/css">
+			.btmshow {
+				border: none;
+				border-bottom: 1px solid black;
+				text-align: center;
+				border-radius: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="app">
+			<div>
+				<h2>uiselectinput</h2>
+				<div >文档</div>
+				<div>
+					<p>组件化开发</p>
+					<p>注意1:lists 为select 需要传入的数组</p>
+					<p>注意2:当前vue版本1.0.26  比较老 ,父子组件同步</p>
+					<p>注意3:开放 selectclass 和inputclass 调整样式</p>
+					
+				</div>
+			<br />
+			<br />
+			<br />
+			<br />
+			
+			
+			<uiselectinput :lists=lists :haha.sync="jiji" selectclass="" inputclass=""></uiselectinput>
+			<br />
+			<uiselectinput :lists=list2 :haha.sync="gaga" selectclass="btmshow" inputclass="btmshow"></uiselectinput>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					gaga: '',
+					jiji: '',
+					lists: [{
+						text: '111'
+					}, {
+						text: '222'
+					}, {
+						text: '333'
+					}],
+					list2: [{
+						text: 'aaa'
+					}, {
+						text: 'bbb'
+					}, {
+						text: 'ccc'
+					}],
+
+				}
+			})
+		</script>
+	</body>
+
+</html>

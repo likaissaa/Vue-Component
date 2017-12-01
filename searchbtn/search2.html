@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<title>Vue2-搜索框组件</title>
+		<link rel="stylesheet" href="css/base.css" />
+		<script type="text/javascript" src="js/jquery-3.1.0.js"></script>
+		<script type="text/javascript" src="js/utils.js"></script>
+		<script type="text/javascript" src="js/vue2.js"></script>
+		<script type="text/javascript" src="js/Components/search2.js"></script>
+		<style>
+			/**
+			 * 字体颜色，光标为红色，字体为text-shadow 颜色
+			 */
+			
+			input[type=search] {
+				color: #E03030;
+				text-shadow: 0px 0px 0px #000;
+				-webkit-text-fill-color: transparent;
+			}
+			/**
+			 * 去掉search 框默认小x
+			 */
+			input[type=search]::-webkit-search-cancel-button {
+				-webkit-appearance: none;
+			}
+			/**
+			 * 去掉search 框默认小x
+			 */
+			
+			input[type=search]::-webkit-input-placeholder {
+				color: #ccc;
+				text-shadow: 0 0 0 #ccc;
+				-webkit-text-fill-color: initial;
+			}
+			
+			.transition1 {
+				transition: all ease .2s
+			}
+			.old2 {
+				/*transform:translateX(40px);*/
+				text-Indent: 35%;
+			}
+			
+			.move2 {
+				/*transform:tranlateX(0px);*/
+				text-Indent: 8%;
+			}
+			
+			.old1 {
+				position: absolute;
+				left: 22%;
+				top: 0;
+			}
+			
+			.move1 {
+				position: absolute;
+				left: 2%;
+				top: 0;
+			}
+			
+			.cancel1 {
+				right: 2%;
+				top: 0;
+			}
+			
+			.cancel2 {
+				right: -100px;
+			}
+			.bdgrey{border:1px solid #ccc}
+		</style>
+	</head>
+
+	<body>
+		<div id="search" style="margin-top: 50px;">
+			
+			<div class="w30 ht30 radius50 bg1 grey center bd1 marginlt5"  v-on:click="show =!show" style="box-shadow: 0 2px 4px black;">文档</div>
+			<div class="lst_nobor" v-if="show">
+				<p class="pd1 "><span class="titleline"></span>组件化开发</p>
+				<p class="pd1 "><span class="titleline"></span>声明：move1 old1 为 放大镜移动 样式 ，move2 old2 位placeholder 移动样式 cancel1 cancel2 为 取消 的移动样式    inputclass：输入框可自行替换样式   -- cancel submits touchme 分别为子组件传递的点击事件 可以按需提取，也可以不用</p>
+				<p class="pd1 "><span class="titleline"></span>移动端：移动端状况下 可发现键盘上有搜索按钮，pc端 回车触发搜索功能</p>
+				<p class="pd1 "><span class="titleline"></span>局限性：高度，图片等硬性样式需要在 组件中自行调整，需要自定义添加样式 old1 old2 move1 move2 cancel1 cancel2 样式</p>
+			</div>
+			
+			<!--关键代码-->
+			<ui-search2 move1="move1 " old1="old1" move2="move2 w85p" old2="old2" cancel1="cancel1" cancel2="cancel2" inputclass="bdgrey"  placeholder="嘿嘿嘿嘿" v-on:cancel="cancel" v-on:touchme="touchme" v-on:submits="submits"></ui-search2>
+			<!--<div class="" id="loadsort"><div class="spinner" style="position: absolute;left: 137.5px;top:298.5px;"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>-->
+			<div class="bg red" v-on:click="test">testeme</div>
+			<br/>
+			<div class="bg red ht30" v-on:click="deletes">delete</div>
+		</div>
+	
+	</body>
+	<script>
+		var vm = new Vue({
+			el: '#search',
+			data: {
+				show:false
+			},
+			methods: {
+				touchme: function() {
+				},
+				cancel: function() {
+
+				},
+				submits: function(text) {
+					console.log(text);
+				},
+				test: function() {
+					var _PageHeight = document.documentElement.clientHeight;
+			var _PageWidth = document.documentElement.clientWidth;
+			//计算loading框距离顶部和左部的距离（loading框的宽度为215px，高度为61px）
+			var _LoadingTop = _PageHeight > 30 ? (_PageHeight - 30) / 2 : 0;
+			var _LoadingLeft = _PageWidth > 100 ? (_PageWidth - 100) / 2 : 0;
+			var html = '<div class="" id="loadsort"><div class="spinner" style="position: absolute;left: ' + _LoadingLeft + 'px;top:' + _LoadingTop + 'px;"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>';
+			$("#search").append(html);
+				for(var i=0;i<100000;i++){
+					console.log(i);
+				}
+				/*$("#loadsort").remove();*/
+				},
+				deletes:function () {
+					
+				}
+			}
+		})
+	</script>
+
+</html>

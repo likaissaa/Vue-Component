@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta charset="utf-8" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" href="css/bootstrap.css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bazel.build.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vue2.5.js" ></script>
+		<script type="text/javascript" src="js/jsAddress.js" ></script>
+		<script type="text/javascript" src="js/components/selectinput2.js" ></script>
+		<style type="text/css">
+
+.btmshow {
+    border: none;
+    border-bottom: 1px solid black;
+    text-align: center;
+    border-radius: 0;
+}
+
+
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+        	<uiselectinput  :lists=lists :pp="jiji" @changeme="changeme"></uiselectinput>
+        	<uiselectinput  :lists=list2 :pp="gaga" @changeme="changeme2"></uiselectinput>
+		</div>
+		<script>
+		
+		
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				gaga:'',
+				jiji:'',
+				a:'',
+				b:'',
+				lists:[{text:'111'},{text:'222'},{text:'333'}],
+				list2:[{text:'aaa'},{text:'bbb'},{text:'ccc'}],
+				
+			},
+			methods:{
+				changeme(val){
+					this.jiji=val
+				},
+				changeme2(val){
+					this.gaga=val
+				},
+			}
+		})
+		</script>
+	</body>
+</html>

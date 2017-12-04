@@ -50,7 +50,6 @@ Vue.component('uiselectinput', {
 		},
 		showcityselect: function() {
 			this.isshowcityselect = false
-			
 			this.$dispatch("wocao")
 		}
 	}

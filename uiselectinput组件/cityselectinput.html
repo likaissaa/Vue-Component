@@ -38,24 +38,33 @@
 	</head>
 	<body>
 		<div id="app">
-			<uiselectinput  :allname.sync="jiji" selectclass="btmshow" inputclass="btmshow" @wocao="wocao"></uiselectinput>
+			<uiselectinput  :allname.sync="jiji" selectclass="btmshow" inputclass="btmshow"name1="cmbProvince" name2="cmbCity" name3="cmbArea" id1="cmbProvince" id2="cmbCity" id3="cmbArea" @wocao="wocao"></uiselectinput>
+			<uiselectinput  :allname.sync="gaga" selectclass="btmshow" inputclass="btmshow"name1="cmbProvince2" name2="cmbCity2" name3="cmbArea2" id1="cmbProvince2" id2="cmbCity2" id3="cmbArea2" @wocao="wocao2"></uiselectinput>
+			<!--<uiselectinput  :allname.sync="jiji" selectclass="btmshow" inputclass="btmshow" @wocao="wocao"></uiselectinput>-->
 		</div>
 		<script>
 		$(function() {
 			addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+			addressInit('cmbProvince2', 'cmbCity2', 'cmbArea2');
 		})
 			var vm = new Vue({
 				el: '#app',
 				data: {
 					jiji:'',
+					gaga:'',
 					show:false
 				},
 				methods:{
-					wocao:function(a,b){
+					wocao:function(){
 					var a = $("select[name='cmbCity']").val();
 					var b = $("select[name='cmbArea']").val();
 					vm.jiji=a+b;
-					}
+					},
+					wocao2:function(){
+					var a = $("select[name='cmbCity2']").val();
+					var b = $("select[name='cmbArea2']").val();
+					vm.gaga=a+b;
+					},
 				}
 			})
 		</script>

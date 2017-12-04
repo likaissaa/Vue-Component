@@ -38,8 +38,25 @@
 	</head>
 	<body>
 		<div id="app">
-			<uiselectinput  :allname.sync="jiji" selectclass="btmshow" inputclass="btmshow"name1="cmbProvince" name2="cmbCity" name3="cmbArea" id1="cmbProvince" id2="cmbCity" id3="cmbArea" @wocao="wocao"></uiselectinput>
-			<uiselectinput  :allname.sync="gaga" selectclass="btmshow" inputclass="btmshow"name1="cmbProvince2" name2="cmbCity2" name3="cmbArea2" id1="cmbProvince2" id2="cmbCity2" id3="cmbArea2" @wocao="wocao2"></uiselectinput>
+			<div>
+				<h2>cityselectinput</h2>
+				<div >文档</div>
+				<div>
+					<p>组件化开发</p>
+					<p>注意1:allname 是 包括城市的 省市区的名字 同步状态</p>
+					<p>注意2:当前vue版本1.0.26  比较老 ,父子组件同步</p>
+					<p>注意3:开放 selectclass 和inputclass 调整样式</p>
+					<p>注意3:开放  省市区的name 和 id 名称  供同一个页面有多个城市选择使用</p>
+					<p>注意3:开放  wocao 点击事件  供确定按钮赋值到  输入框 ,页面中有多个 组件那么需要 多次点击确定事件</p>
+					
+				</div>
+			<br />
+			<br />
+			<br />
+			<br />
+			
+			<cityselectinput  :allname.sync="jiji" selectclass="btmshow" inputclass="btmshow"name1="cmbProvince" name2="cmbCity" name3="cmbArea" id1="cmbProvince" id2="cmbCity" id3="cmbArea" @wocao="wocao"></uiselectinput>
+			<cityselectinput  :allname.sync="gaga" selectclass="btmshow" inputclass="btmshow"name1="cmbProvince2" name2="cmbCity2" name3="cmbArea2" id1="cmbProvince2" id2="cmbCity2" id3="cmbArea2" @wocao="wocao2"></uiselectinput>
 			<!--<uiselectinput  :allname.sync="jiji" selectclass="btmshow" inputclass="btmshow" @wocao="wocao"></uiselectinput>-->
 		</div>
 		<script>

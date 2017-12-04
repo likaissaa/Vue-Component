@@ -1,8 +1,8 @@
 /**
- * 2017-11-30
+ * 2017-12-4
  * by yh
  * 既可以输入 又可以选择的组件
- * 应对于 有表格需求的页面
+ * 应对于 城市选择 但是又希望 可以输入和选择的组件
  * 样式：纯bootstrap 样式和 需要改装的+只有 下横线的当前组件
  * vue 版本 qqt 1.0.26
  * 
@@ -11,7 +11,7 @@
  */
 /*position:relative;overflow: hidden;*/
 /*style="width:calc(100% - 40px);position:absolute;left:0;top:0;border-top-right-radius: 0px;border-bottom-right-radius: 0px;"*/
-Vue.component('uiselectinput', {
+Vue.component('cityselectinput', {
 	template: '\
 		<div :style= "uitop">\
 			<select  class="form-control" :class="selectclass"  v-on:click="clickselect">\
@@ -50,7 +50,6 @@ Vue.component('uiselectinput', {
 		},
 		showcityselect: function() {
 			this.isshowcityselect = false
-			
 			this.$dispatch("wocao")
 		}
 	}

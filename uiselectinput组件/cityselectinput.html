@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" href="css/bootstrap.css/bootstrap.min.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/components/city.js" ></script>
+		<script type="text/javascript" src="js/jsAddress.js" ></script>
+		<style type="text/css">
+			.cityselect {
+				list-style: none;
+				position: absolute;
+				left: 0;
+				top: 42px;
+				width: 100%;
+				border: 1px solid rgb(128, 183, 225);
+				padding: 0px;
+				background: #fff;
+				z-index: 10;
+			}
+			
+			
+			.cityedit {
+				position: relative;
+				width: 220px;
+			}
+			.btmshow {
+				border: none;
+				border-bottom: 1px solid black;
+				text-align: center;
+				border-radius: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<uiselectinput  :allname.sync="jiji" selectclass="btmshow" inputclass="btmshow" @wocao="wocao"></uiselectinput>
+		</div>
+		<script>
+		$(function() {
+			addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+		})
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					jiji:'',
+					show:false
+				},
+				methods:{
+					wocao:function(a,b){
+					var a = $("select[name='cmbCity']").val();
+					var b = $("select[name='cmbArea']").val();
+					vm.jiji=a+b;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

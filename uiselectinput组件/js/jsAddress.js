@@ -60,7 +60,7 @@ var addressInit = function(_cmbProvince, _cmbCity, _cmbArea, defaultProvince, de
 }  
 
 var provinceList = [
-{name:'福建', cityList:[           
+{name:'福建', cityList:[
 {name:'厦门市', areaList:['','思明区','海沧区','湖里区','集美区','同安区','翔安区']},            
 {name:'福州市', areaList:['','鼓楼区','台江区','仓山区','马尾区','晋安区','闽侯县','连江县','罗源县','闽清县','永泰县','平潭县','福清市','长乐市' ]},          
 {name:'莆田市', areaList:['','城厢区','涵江区','荔城区','秀屿区','仙游县']},            

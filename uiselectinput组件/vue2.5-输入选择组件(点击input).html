@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" href="css/bootstrap.css/bootstrap.min.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vue2.5.js" ></script>
+		<script type="text/javascript" src="js/components/selectinput11.js" ></script>
+		<title>Vue-uiselect组件</title>
+		<style>
+		/*	.iconxiala{background:url('img/citydown1.png') no-repeat 98% center;background-size:16px 16px;background-color:white;}
+			.bdblue{border:1px solid #64B2E6;}
+			.bgblue{background-color:#64B2E6;color:black}
+			.radiusnone{border-radius:0px}*/
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div>
+				<h2>uiselect</h2>
+				<div class=""  v-on:click="show =!show" style="width:30px;border-radius: 50%;box-shadow: 0 2px 4px black;">文档</div>
+				<div class="lst_nobor" v-if="show">
+					<p class="pd1"><span class="titleline"></span>组件化开发</p>
+					<p class="pd1"><span class="titleline"></span>使用此控件需要把items 对象中的文本定义成text,id定义成id 不能为其他</p>
+					<p class="pd1"><span class="titleline"></span>对象默认为items 可在  :items = 替换为自己的对象名称</p>
+					<p class="pd1"><span class="titleline"></span>选中时，uiselectid 就是选中的id,uiselecteindex 就是选中的索引,uiselecttext 就是选中的文本</p>
+					<p class="pd1"><span class="titleline"></span>灵活性：可调整hover 颜色 ，class（宽度，高度建议保持不变，圆角等）style。 建议点击后的蓝色边框不要随时调整，麻烦--还有 就是只有一个input框 点击input 框弹出选择框 如果输入那么 选择框消失 或者点击其他地方 选择框消失)</p>
+					<p class="pd1"><span class="titleline"></span><span class="marginlt">局限性:对象中items 必须设置id名称为id，文本名称为text，isshowhover：false，  也可以根据需要去组件中调整</span></p>
+				</div>
+				</div>
+			<br />
+			<br />
+			<br />
+			<br />
+			
+			
+			<!--uiselect 关键语句 @choose=>子组件传递的点击事件，hovercolor=>调节hover 颜色，items=>数据对象 ，uiselectclass=>上下样式调整,uiselectstyle=>上style 调整-->
+			<div id="" style="width:90%;">
+				<uiselect v-model="jiji" @choose="choose" hovercolor="btn-primary" :items=items uiselectclass="" :uiselectstyle="uiselectstyle"></uiselect>
+			</div>
+			
+			<uiselect @choose="choose" hovercolor="btn-primary" :items=items uiselectclass="" :uiselectstyle="uiselectstyle"></uiselect>
+			<uiselect @choose="choose" hovercolor="btn-primary" :items=items uiselectclass="" :uiselectstyle="uiselectstyle"></uiselect>
+			
+			
+			
+			
+			<br />
+			<div class="bdred ht30">uiselectindex:  {{uiselectindex}}</div><br />
+			<div class="bdred ht30">uiselectid:  {{uiselectid}}</div><br />
+			<div class="bdred ht30">uiselecttext:  {{uiselecttext}}</div>
+		</div>
+		
+		
+	</body>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				jiji:'',
+				show:false,
+				uiselectstyle:'',//设置select 上面的样式
+				uiselectindex:'',//设置选中的索引
+				uiselectid:'',//设置选中的id
+				uiselecttext:'',//设置选中的文本
+				items:[{text:'男',isshowhover:false,id:'00'},{text:'女',isshowhover:false,id:'11'},{text:'男',isshowhover:false,id:'22'},{text:'男',isshowhover:false,id:'33'},{text:'男',isshowhover:false,id:'44'},{text:'男',isshowhover:false,id:'55'},{text:'男',isshowhover:false,id:'66'},{text:'男',isshowhover:false,id:'77'}],
+				//必须设置text，id，和isshowhover 默认模板如上
+			},
+			methods:{
+				choose:function(index,val,text){ //子组件传递到父组件事件
+					vm.uiselectid=val;
+					vm.jiji=text;
+					vm.uiselecttext=text;
+					vm.uiselectindex=index;
+					
+				},
+			}
+		})
+		
+	</script>
+</html>

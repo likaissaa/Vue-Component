@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>城市选择vue1.x-版本1(非打印).html.html</title>
+		<link rel="stylesheet" href="css/bootstrap.css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" href="css/bootstrap.css/bootstrap.min.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/components/city2.js"></script>
+		<script type="text/javascript" src="js/jsAddress.js"></script>
+		<style type="text/css">
+			.cityselect {
+				list-style: none;
+				position: absolute;
+				left: 0;
+				top: 42px;
+				width: 100%;
+				border: 1px solid rgb(128, 183, 225);
+				padding: 0px;
+				background: #fff;
+				z-index: 10;
+			}
+			
+			.cityedit {
+				position: relative;
+				width: 220px;
+			}
+			
+			.btmshow {
+				border: none;
+				border-bottom: 1px solid black;
+				text-align: center;
+				border-radius: 0;
+			}
+			
+			select {
+				-webkit-appearance: none;
+				position: relative;
+			}
+			
+			
+			
+			/*.city {
+				position: absolute;
+				right: 6px;
+				top: 15px;
+				border-left: 3px solid transparent;
+				border-right: 3px solid transparent;
+				border-top: 6px solid #666;
+				border-bottom: 4px solid transparent;
+				cursor: pointer;
+			}*/
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<div>
+				<h2>cityselectinput</h2>
+				<div>文档</div>
+				<div>
+					<p>组件化开发</p>
+					<p>注意1:allname 是 包括城市的 省市区的名字 同步状态</p>
+					<p>注意2:当前vue版本1.0.26 比较老 ,父子组件同步</p>
+					<p>注意3:开放 selectclass 和inputclass 调整样式</p>
+					<p>注意3:开放 省市区的name 和 id 名称 供同一个页面有多个城市选择使用</p>
+					<p>注意3:开放 wocao 点击事件 供确定按钮赋值到 输入框 ,页面中有多个 组件那么需要 多次点击确定事件</p>
+
+				</div>
+				<br />
+				<br />
+				<br />
+				<br />
+
+				<cityselectinput :allname.sync="jiji" selectclass="" inputclass="" name1="cmbProvince" name2="cmbCity" name3="cmbArea" id1="cmbProvince" id2="cmbCity" id3="cmbArea" @wocao="wocao">
+					</uiselectinput>
+					<cityselectinput :allname.sync="gaga" selectclass="" inputclass=" " name1="cmbProvince2" name2="cmbCity2" name3="cmbArea2" id1="cmbProvince2" id2="cmbCity2" id3="cmbArea2" @wocao="wocao2">
+						</uiselectinput>
+						< <!-- function change() { var obj=d ocument.getElementById( "haha") var len=o bj.files.length; for(i=0 ; i < len; i++) { var temp=o bj.files[i].name.split( "."); alert(temp[0]); } }-->
+
+							<!--<uiselectinput  :allname.sync="jiji" selectclass="btmshow" inputclass="btmshow" @wocao="wocao"></uiselectinput>-->
+			</div>
+			<script>
+				$(function() {
+					addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+					addressInit('cmbProvince2', 'cmbCity2', 'cmbArea2');
+				})
+				var vm = new Vue({
+					el: '#app',
+					data: {
+						jiji: '',
+						gaga: '',
+						show: false
+					},
+					methods: {
+						wocao: function() {
+							var a = $("select[name='cmbCity']").val();
+							var b = $("select[name='cmbArea']").val();
+							vm.jiji = a + b;
+						},
+						wocao2: function() {
+							var a = $("select[name='cmbCity2']").val();
+							var b = $("select[name='cmbArea2']").val();
+							vm.gaga = a + b;
+						},
+
+					}
+				})
+			</script>
+	</body>
+
+</html>

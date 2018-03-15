@@ -16,21 +16,23 @@
 Vue.component('uiselect',
 	{
 	template: '<div style="position:relative">\
-		<div  class="input-group col-md-12" >\
-<input	type="text" class="form-control" :class="[uiselectclass]" :style="uiselectstyle" v-model="pleasechoose">\
-			<span class="input-group-addon printnone" v-on:click = "show"><i class="iconfont icon-xiala2"></i></span>\
+		<div  class="input-group col-md-12" v-on:click = "show" >\
+<input	type="text" class="form-control" :class="[uiselectclass]" :style="uiselectstyle" v-on:input="updateValue($event.target.value)" :disabled="inputdisabled" v-model="pleasechoose">\
+			<span class="input-group-addon printnone" ><i class="iconfont icon-xiala2"></i></span>\
 		</div>\
-		<ul v-show="isshowcity" class="list-unstyled" :class="[uiselectclass]" style="position: absolute;left:0;top:33px;width:100%; border: 1px solid rgb(128, 183, 225);padding:0;background:#fff;max-height:200px;overflow-y:scroll;z-index:100">\
-				<li v-for= "item  in items"  v-bind:class="[item.isshowhover?hovercolor:\'\']" @mouseover="mouseover(item)" @mouseout="mouseout(item)" v-on:click.stop="choose($index)">{{item.text}}</li>\
+		<ul v-show="isshowcity" class="list-unstyled" :class="[uiselectclass]" :style="ulstyle">\
+				<li v-for= "item  in items" :style="listyle" v-bind:class="[item.isshowhover?hovercolor:\'\']" @mouseover="mouseover(item)" @mouseout="mouseout(item)" v-on:click.stop="choose($index)">{{item.text}}</li>\
 		</ul>\
 	</div>\
 			',
 			/*改变hover 颜色 需要父亲传来需要的颜色给组件显示,同时组件中出现判定是否显示这个颜色*/
-	props:['uiselectclass','uiselectstyle','items','hovercolor','pleasechoose'],
+	props:['uiselectclass','uiselectstyle','items','hovercolor','pleasechoose','inputdisabled'],
 	data:function(){
 		return {
 			isshowcity:false,
-			val:''
+			val:'',
+			ulstyle:'position: absolute;left:0;top:33px;width:100%; border: 1px solid rgb(128, 183, 225);padding:0;background:#fff;max-height:200px;overflow-y:scroll;z-index:100;display:none;',
+			listyle:'padding-left:12px;'
 		}
 	},
 	methods:{
@@ -65,6 +67,9 @@ Vue.component('uiselect',
 			this.val=this.items[index].id;
 			this.$emit("choose",index,this.val,this.items[index].text)
 		},
+		updateValue: function(value) {
+			this.isshowcity=false;
+		}
 	},
 	
 	/**

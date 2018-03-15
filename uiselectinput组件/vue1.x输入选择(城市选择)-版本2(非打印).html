@@ -3,15 +3,15 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>城市选择vue1.x-版本1(非打印).html.html</title>
 		<link rel="stylesheet" href="css/bootstrap.css/bootstrap-theme.min.css" />
 		<link rel="stylesheet" href="css/bootstrap.css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/fonts/iconfont.css" />
-		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
 		<script type="text/javascript" src="js/components/selectcity.js"></script>
 		<script type="text/javascript" src="js/components/selectcity2.js"></script>
-		<script type="text/javascript" src="js/jsAddress.js" ></script>
+		<script type="text/javascript" src="js/jsAddress.js"></script>
 		<title>Vue-uiselect组件</title>
 		<style>
 			.iconxiala {
@@ -32,26 +32,34 @@
 			.radiusnone {
 				border-radius: 0px
 			}
-			select{
+			
+			select {
 				-webkit-appearance: none;
+				-moz-appearance: none;
 			}
-			@media print{
-				.printnone{
-					display:none!important;
+			
+			@media print {
+				.printnone {
+					display: none!important;
 				}
 				input[type="text"] {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	-o-appearance: none;
-	appearance: none;
-	border: none!important;
-	box-shadow: 0 0 0 !important;
-	-webkit-box-shadow: 0 0 0!important;
-	-moz-box-shadow: 0 0 0!important;
-	-o-box-shadow: 0 0 0!important;
-	border-radius: none!important;
-	padding: 0!important;
-}
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					-o-appearance: none;
+					appearance: none;
+					border: none!important;
+					box-shadow: 0 0 0 !important;
+					-webkit-box-shadow: 0 0 0!important;
+					-moz-box-shadow: 0 0 0!important;
+					-o-box-shadow: 0 0 0!important;
+					border-radius: none!important;
+					padding: 0!important;
+				}
+			}
+			
+			.form-control[disabled]{
+				background-color: #fff; 
+				opacity: 1;
 			}
 		</style>
 	</head>
@@ -76,14 +84,25 @@
 			<br />
 
 			<!--uiselect 关键语句 @choose=>子组件传递的点击事件，hovercolor=>调节hover 颜色，items=>数据对象 ，uiselectclass=>上下样式调整,uiselectstyle=>上style 调整-->
+			<h4>下拉选择框</h4>
 			<div>
-			<uiselect @choose="choose" :pleasechoose.sync="gaga" :hovercolor=hovercolor :items=items uiselectclass="bdred" :uiselectstyle="uiselectstyle"></uiselect>
+				<uiselect @choose="choose" :inputdisabled="true" :pleasechoose.sync="gaga" :hovercolor=hovercolor :items=items1  uiselectclass="bdred" :uiselectstyle="uiselectstyle"></uiselect>
 			</div>
-			<br />
+			<h4>下拉选择输入框</h4>
 			<div>
-				<uiselectcity :pleasechoose.sync="jiji" selectclass="" inputclass="" name1="cmbProvince" name2="cmbCity" name3="cmbArea" id1="cmbProvince" id2="cmbCity" id3="cmbArea" @wocao="wocao">
+				<uiselect @choose="choose2" :inputdisabled="false" :pleasechoose.sync="papa" :hovercolor=hovercolor :items=items uiselectclass="bdred" :uiselectstyle="uiselectstyle"></uiselect>
+			</div>
+			<h4>下拉选择输入城市框</h4>
+			<div>
+				<uiselectcity :pleasechoose.sync="jiji" selectclass="" inputclass="" name1="cmbProvince" name2="cmbCity" name3="cmbArea" id1="cmbProvince" id2="cmbCity" id3="cmbArea">
 				</uiselectcity>
-				
+				<br />
+				<br />
+				<br />
+				<br />
+				<uiselectcity :pleasechoose.sync="xixi" selectclass="" inputclass="" name1="cmbProvince1" name2="cmbCity1" name3="cmbArea1" id1="cmbProvince1" id2="cmbCity1" id3="cmbArea1">
+				</uiselectcity>
+
 			</div>
 
 			<br />
@@ -94,15 +113,13 @@
 
 	</body>
 	<script>
-	$(function() {
-			addressInit('cmbProvince', 'cmbCity', 'cmbArea');
-			addressInit('cmbProvince2', 'cmbCity2', 'cmbArea2');
-		})
 		var vm = new Vue({
 			el: '#app',
 			data: {
-				gaga:'',
-				jiji:'',
+				gaga: '',
+				jiji: '',
+				papa:'',
+				xixi:'',
 				show: false,
 				hovercolor: 'btn-danger', //设置hover颜色
 				uiselectstyle: '', //设置select 上面的样式
@@ -142,18 +159,33 @@
 					isshowhover: false,
 					id: '77'
 				}],
+				items1: [ {
+					text: '男',
+					isshowhover: false,
+					id: '44'
+				},  {
+					text: 'e',
+					isshowhover: false,
+					id: '77'
+				}],
 				//必须设置text，id，和isshowhover 默认模板如上
 			},
 			methods: {
 				choose: function(index, val, text) { //子组件传递到父组件事件
 					vm.gaga = text;
-
+					vm.uiselectid=val;
+					vm.uiselectindex=index;
+					vm.uiselecttext=text;
+					
 				},
-				wocao: function() {
-					var a = $("select[name='cmbCity']").val();
-					var b = $("select[name='cmbArea']").val();
-					vm.jiji = a + b;
+				choose2: function(index, val, text) { //子组件传递到父组件事件
+					vm.papa = text;
+					vm.uiselectid=val;
+					vm.uiselectindex=index;
+					vm.uiselecttext=text;
+					
 				},
+				
 			}
 		})
 	</script>
